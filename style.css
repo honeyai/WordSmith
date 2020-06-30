@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.wrapper {
+  border: springgreen solid;
+  background-color: #d6ddf5;
+  display: grid;
+  /* justify-items: center; */
+  align-items: center; 
+  grid-template-columns: repeat(1fr 1fr 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 5px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.wrapperBuffer {
+  border: violet solid;
+  width: 3%;
+  height: 100%;
+  grid-column: 1;
+  grid-row: 1, 5;
+}
+
+#wrapperBuffer {
+  border: rgb(133, 36, 133) solid;
+  width: 3%;
+  height: 100%;
+  grid-column: 5;
+  grid-row: 1 , 5;
+
+}
+
+.gameTitle {
+  border: steelblue solid;
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+.playerOneScore {
+  border: tan solid;
+  grid-column: 2;
+  grid-row: 2;
+
+}
+
+.playerTwoScore {
+  border: teal solid;
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.roundCounter {
+  border: thistle solid;
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.computerWordDisplay {
+  border: tomato solid;
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.playerTextField {
+  border: turquoise solid;
+  grid-column: 3;
+  grid-row: 4;
+}
