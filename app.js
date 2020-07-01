@@ -8,7 +8,7 @@ const wordBank = [
     "beaming",
     "blissful",
     "blithe",
-    "bouyant",
+    "buoyant",
     "carefree",
     "cheery",
     "chipper",
@@ -75,9 +75,11 @@ const wordBank = [
   
 ];
 
-
-let index;
 let points = 0;
+let index;
+let pOnePoints = 0;
+let pTwoPoints = 0;
+let oneTurn = true;
 
 
 //This is the text field. It sends over the text over to the object methods when it detects a change
@@ -89,6 +91,7 @@ answerBox.addEventListener("change", function(event){
     playerWord = event.target.value;
     console.log("this is the player's word:", playerWord)
     if(wordBank[0].validAnswerCheck(playerWord)){
+      points = 0;
       wordBank[0].points(wordBank[0].validAnswerCheck(playerWord))
     }
   }
@@ -97,19 +100,41 @@ answerBox.addEventListener("change", function(event){
 //create a pseudo-button that doesn't submit but instead does ask to spellcheck
 let definitelyARealButton = document.querySelector(".fakeSubmit");
 let pOneScore = document.querySelector(".playerOneScore")
+let pTwoScore = document.querySelector(".playerTwoScore")
 
 definitelyARealButton.addEventListener("click", function(event){
-  //evaluates the points (done by the answerBox listener)
-  if(playerWord === ""){
-    console.log("entered an empty string")
-  } else {
-    //displays those points to the respective play box y
-    pOneScore.innerHTML = "Player one: "+ points + " points";
+    //evaluates the points (done by the answerBox listener)
+    
+      if(oneTurn === true){
+          if(playerWord === ""){
+          console.log("entered an empty string")
+        } else {
+          pOnePoints += points;
+          //displays those points to the respective play box y
+          pOneScore.innerHTML = "Player one: "+ pOnePoints + " points";
+          // oneTurn = false;
+        }
+      }
+        // console.log("now we're outside the loop")
+        // makes the next player go
+      if(oneTurn === false){
+        if(playerWord === ""){
+          console.log("entered an empty string")
+        } else {
+          pTwoPoints += points;
+          //displays those points to the respective play box y
+          pTwoScore.innerHTML = "Player two: \n"+ pOnePoints + " points";
+        }
+      }
+      if(oneTurn === true){
+        console.log("it's player two's turn")
+        oneTurn = false;
+      } else {
+        console.log("it's player one's turn")
+        oneTurn = true;
+      }
   }
-
-  //makes the second play go
-  //
-})
+);
 
 
 
