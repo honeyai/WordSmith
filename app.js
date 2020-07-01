@@ -42,6 +42,8 @@ const wordBank = [
     //if it is give me the index of this word. The index will be fed to the points method
       index = this.synonyms.indexOf(input);
       return this.synonyms[index];
+      } else {
+        console.log("no points");
       }
   },
   //award points based on length
@@ -68,6 +70,26 @@ const wordBank = [
 
 let index;
 
+let answerBox = document.querySelector("#answer");
+
+let playerWord = "";
+
+answerBox.addEventListener("change", function(event){
+    playerWord = event.target.value;
+    console.log("this is the player's word:", playerWord)
+    if(wordBank[0].validAnswerCheck(playerWord)){
+      wordBank[0].points(wordBank[0].validAnswerCheck(playerWord))
+    }
+  }
+);
+
+
+//something to confirm if you want to submit. Chance to check for spellings
+
+
+
+
+
 // const validAnswerCheck =  (input) => {
 // //is the input any of these iterated words, give me a boolean
 //   if(wordBank[0].synonyms.includes(input)){  
@@ -77,7 +99,6 @@ let index;
 //   }
 // }
 
-console.log(wordBank[0].points(wordBank[0].validAnswerCheck("")));
 
 
-//something to confirm if you want to submit. Chance to check for spellings
+
