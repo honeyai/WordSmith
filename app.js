@@ -665,9 +665,9 @@ const wordBank = [
 //################################################################################################################################################
 
 
-//==========================================
-//== Randomizing the Czar word            ==
-//==========================================
+//===================================
+//==   Randomizing the Czar word   ==
+//===================================
 
 let randIndex;
 let czarWord;
@@ -675,9 +675,12 @@ let czarWord;
 const randomizeWord = () => {
   randIndex = Math.floor(Math.random() * wordBank.length);
   czarWord = wordBank[randIndex].word;
-  let groupNword = [wordBank[randIndex], czarWord];
+  console.log("this is the word", czarWord);
+  groupNword = [wordBank[randIndex], czarWord];
   return groupNword;
 }
+
+randomizeWord();
 
 //==========================================
 //==  This is the text field. It sends    ==
@@ -693,8 +696,8 @@ answerBox.addEventListener("change", function(event){
     playerWord = event.target.value;
     console.log("this is the player's word:", playerWord)
     points = 0;
-    if(wordBank[0].validAnswerCheck(playerWord)){
-      wordBank[0].points(wordBank[0].validAnswerCheck(playerWord))
+    if(groupNword[0].validAnswerCheck(playerWord)){
+      groupNword[0].points(groupNword[0].validAnswerCheck(playerWord))
     }
   }
 );
@@ -705,10 +708,7 @@ let round = 1;
 let displayRound = document.querySelector(".roundCounter");
 
 const printRound = () => displayRound.innerHTML = "Round: " + round;
-printRound()
-
-
-
+printRound();
 
 
 //==========================================
@@ -718,8 +718,6 @@ printRound()
 let definitelyARealButton = document.querySelector(".fakeSubmit");
 let pOneScore = document.querySelector(".playerOneScore")
 let pTwoScore = document.querySelector(".playerTwoScore")
-
-
 
 definitelyARealButton.addEventListener("click", function(event){
     console.log(round)
@@ -744,7 +742,8 @@ definitelyARealButton.addEventListener("click", function(event){
                     //--~ in two seconds after player two goes it'll say who won ~--
         setTimeout(whoWonRound(pOnePoints, pTwoPoints), 10000);
         round+
-        printRound()
+        printRound();
+        printWord(groupNword[1]);
       }
     }
 
@@ -763,16 +762,20 @@ definitelyARealButton.addEventListener("click", function(event){
   }
 );
 
-
-//======================================================
-//==  The computer talking:                           ==
-//==      -dialogue for the comp to tell              ==
-//==        the which player won                      ==
-//==      -Printing the round's word                  ==
-//======================================================
-
+//===============================================
+//==  The computer talking:                    ==
+//==      -dialogue for the comp to tell       ==
+//==        the which player won               ==
+//==      -Printing the round's word           ==
+//===============================================
 
 let wordCzar = document.querySelector(".computerWordDisplay");
+
+const printWord = (word) => {
+  wordCzar.innerHTML = "The word is " + word;
+}
+
+printWord(groupNword[1]);
 
 const whoWonRound = (pOne, pTwo) => {
   if(pOne > pTwo){
