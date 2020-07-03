@@ -778,6 +778,7 @@ let gameStartDialogue = document.querySelector(".startCzar")
 let triggerInstructions = document.querySelector(".roundSelector"
 )
 let hideForm = document.querySelector(".gameStart"); 
+let instructions = document.querySelector(".instructions")
 close.onclick = function (){
   modal.style.display = "none";
   printRound();
@@ -785,7 +786,8 @@ close.onclick = function (){
 }
 
 triggerInstructions.onclick = function (){
-  
+  instructions.style.display = "flex";
+  close.style.display = "block";
 }
 
 
