@@ -828,6 +828,8 @@ definitelyARealButton.addEventListener("click", function(event){
   toggleTurn();
   if(totalRounds === 0){
       winner();
+      //ask to play again
+      //reset the values of the scores
     }
   } 
 );
