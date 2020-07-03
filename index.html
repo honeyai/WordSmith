@@ -34,10 +34,25 @@
 
     <div class="playerTextField">
       <input type="text" name="playerInput" id="answer"> <br>
-      <button class="fakeSubmit">Submit</button>
+      <button class="fakeSubmit" action="javascript:gamePlay()">Submit</button>
     </div>
 
     <div id="wrapperBuffer"></div>
+
+    <div class="modalStart">
+      <form class="gameStart" action="javascript:startGame()" name="gamestart">
+      How many rounds would you like to play?<br>
+      <input type="radio" name="rounds" class="chooseRounds" value="3">3</input><br>
+      <input type="radio" name="rounds" class="chooseRounds" value="5">5</input><br>
+      <input type="radio" name="rounds" class="chooseRounds" value="7">7</input><br>
+      <input type="radio" name="rounds" class="chooseRounds" value="9">9</input><br>
+      <input type="submit" value="Start the Game">
+    </form>
+      <div class="startCzar">
+
+      </div>
+    </div>
+
   </div>
 
 

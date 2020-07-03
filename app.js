@@ -109,7 +109,7 @@ const wordBank = [
     'happy',             'elysian',          'paradisiacal',
     'paradisiac',        'paradisaical',     'paradisaic',
     'paradisal',         'paradisial',       'halcyon',
-    'expansive',         'euphoriant'
+    'expansive',         'euphoriant',       'joy',
   ],
 
   //==============================================
@@ -519,7 +519,8 @@ const wordBank = [
       'smudgy',      'smutchy',       'smutty',      'snuffy',
       'sooty',       'sordid',        'squalid',     'tacky',
       'tattered',    'unfastidious',  'unkempt',     'unneat',
-      'unsightly',   'unthorough',    'untidy',    'untidy'
+      'unsightly',   'unthorough',    'untidy',      'untidy',
+      'disorganized',
     ],
 
     //==============================================
@@ -646,7 +647,7 @@ const wordBank = [
       'wonderful',         'wondrous',           'wondrous',
       'strange',           'antic',              'fantastical',
       'eerie',             'eery',               'gothic',
-      'oddish',            'uneasy'
+      'oddish',            'uneasy',             
     ],
 
     //==============================================
@@ -722,8 +723,6 @@ const randomizeWord = () => {
   return groupNword;
 }
 
-
-
 //==========================================
 //==  This is the text field. It sends    ==
 //==   over the text over to the object   ==
@@ -745,13 +744,43 @@ answerBox.addEventListener("change", function(event){
 );
 
 
+//======================================
+//== Determining how many rounds the  ==
+//==  player wants. All odd numbered  ==
+//======================================
+let totalRounds;
+
+const startGame = () => {
+  let form = document.querySelector(".gameStart");
+  totalRounds = form.elements.rounds.value;
+  let gameStartDialogue = document.querySelector(".startCzar")
+  gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds. \nThe longest word wins the round. The most points at the end of ${totalRounds} rounds is the WORD SMITH. \nLet us begin!`;
+  printRound();
+  printWord(randomizeWord());
+}
+
 //setting up the page?
 let round = 1;
 let displayRound = document.querySelector(".roundCounter");
 
 const printRound = () => displayRound.innerHTML = "Round: " + round;
-printRound();
 
+
+
+//++++++++++++++++++++++++++++++
+//++ Makes the next player go ++
+//++++++++++++++++++++++++++++++ 
+
+const toggleTurn = () => {
+  if(turnToggle === true){
+    console.log("it's player two's turn")
+    turnToggle = false;
+  } else {
+    console.log("it's player one's turn")
+    turnToggle = true;
+    round++;
+  }
+}
 
 //==========================================
 //== Prints things to the respective divs ==
@@ -761,50 +790,46 @@ let definitelyARealButton = document.querySelector(".fakeSubmit");
 let pOneScore = document.querySelector(".playerOneScore")
 let pTwoScore = document.querySelector(".playerTwoScore")
 
+
+
 definitelyARealButton.addEventListener("click", function(event){
-    console.log(round)
-    if(turnToggle === true){
-        if(playerWord === ""){
-        console.log("entered an empty string")
-      } else {
-        console.log("this is what points is holding",points)
-        pOnePoints += points;
-        // --~ displays those points to the respective play box y ~---
-        pOneScore.innerHTML = "Player one: "+ pOnePoints + " points";
-        answerBox.value = "";
-      }
-    }
-    if(turnToggle === false){
+  console.log(round)
+  if(turnToggle === true){
       if(playerWord === ""){
-        console.log("entered an empty string")
-      } else {
-        console.log("this is what points is holding",points)
-        pTwoPoints += points;
-                    //--~ displays those points to the respective play box y ~--
-        pTwoScore.innerHTML = "Player two: \n"+ pTwoPoints + " points";
-                    //--~ in two seconds after player two goes it'll say who won ~--
-        answerBox.value = "";
-        setTimeout(whoWonRound, 500, pOnePoints, pTwoPoints);
+      console.log("entered an empty string")
+    } else {
+      console.log("this is what points is holding",points)
+      pOnePoints += points;
+      // --~ displays those points to the respective play box y ~---
+      pOneScore.innerHTML = "Player one: "+ pOnePoints + " points";
+      answerBox.value = "";
+    }
+  }
+  if(turnToggle === false){
+    if(playerWord === ""){
+      console.log("entered an empty string")
+    } else {
+      console.log("this is what points is holding",points)
+      pTwoPoints += points;
+      //--~ displays those points to the respective play box y ~--
+      pTwoScore.innerHTML = "Player two: \n"+ pTwoPoints + " points";
+      //--~ in two seconds after player two goes it'll say who won ~--
+      answerBox.value = "";
+      totalRounds--;
+      if(totalRounds > 0){
+        setTimeout(whoWonRound, 500, pOnePoints, pTwoPoints, totalRounds);
         setTimeout(printRound, 500);
         setTimeout(function(){
           printWord(randomizeWord())
         }, 5000);
       }
-    }
-
-    //++++++++++++++++++++++++++++++
-    //++ Makes the next player go ++
-    //++++++++++++++++++++++++++++++
-
-    if(turnToggle === true){
-      console.log("it's player two's turn")
-      turnToggle = false;
-    } else {
-      console.log("it's player one's turn")
-      turnToggle = true;
-      round++;
-    }
+    }  
   }
+  toggleTurn();
+  if(totalRounds === 0){
+      winner();
+    }
+  } 
 );
 
 //===============================================
@@ -818,20 +843,32 @@ let wordCzar = document.querySelector(".computerWordDisplay");
 
 const printWord = (word) => {
   displayWord = word[1];
-  wordCzar.innerHTML = "The word is " + displayWord;
+  wordCzar.innerHTML = "Word Smiths, your word is " + displayWord;
 }
-
-printWord(randomizeWord());
 
 const whoWonRound = (pOne, pTwo) => {
-  if(pOne > pTwo){
-    wordCzar.innerHTML = "Player one won this round!\nPlayer two...get it together!\nNext Round!"
-  } else if(pTwo > pOne){
-    wordCzar.innerHTML = "Player two won this round!\nPlayer one...get it together!\nNext Round!"
-  } else if(pOne === pTwo){
-    wordCzar.innerHTML = "Evenly matched! This round was a tie!\nNext Round!"
-  }
+    if(pOne > pTwo){
+      wordCzar.innerHTML = "Player one has won this round!\nPlayer two...get it together!\nNext Round!"
+    } else if(pTwo > pOne){
+      wordCzar.innerHTML = "Player two has won this round!\nPlayer one...get it together!\nNext Round!"
+    } else if(pOne === pTwo){
+      wordCzar.innerHTML = "Evenly matched! This round was a tie!\nNext Round!"
+    }
 }
+
+const winner = () => {
+  wordCzar.innerHTML = "That's the end! \nResults are in... Who is the Word Smith?"
+  if(pOnePoints > pTwoPoints){
+    setTimeout(function () {
+      wordCzar.innerHTML = "Player Two!\nBetter luck next time. Player One you are the WORD SMITH";
+    }, 3000);
+  } else if (pOnePoints < pTwoPoints){
+    setTimeout(function (){
+      wordCzar.innerHTML = "Player One! \nBetter luck next time. Player Two you are the WORD SMITH";
+    }, 3000);
+  }
+} 
+
 
 //*===============================================================NOTES=========================================================================
 
