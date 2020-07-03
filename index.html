@@ -40,16 +40,21 @@
     <div id="wrapperBuffer"></div>
 
     <div class="modalStart">
+      <p>WELCOME TO WORD SMITH</p>
       <form class="gameStart" action="javascript:startGame()" name="gamestart">
-      How many rounds would you like to play?<br>
-      <input type="radio" name="rounds" class="chooseRounds" value="3">3</input><br>
-      <input type="radio" name="rounds" class="chooseRounds" value="5">5</input><br>
-      <input type="radio" name="rounds" class="chooseRounds" value="7">7</input><br>
-      <input type="radio" name="rounds" class="chooseRounds" value="9">9</input><br>
-      <input type="submit" value="Start the Game">
-    </form>
-      <div class="startCzar">
+        How many rounds would you like to play?<br><br>
+        <div class="organize">
+          <input type="radio" name="rounds" class="chooseRounds" value="3">  3 rounds</input><br><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="5">  5 rounds</input><br><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="7">  7 rounds</input><br><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="9">  9 rounds</input><br><br>
+        </div>
+        <input type="submit" value="Select" class="roundSelector">
+      </form>
 
+      <div class="instructions">
+        <p class="startCzar"></p>
+        <button class="startGame">Start Game</button>
       </div>
     </div>
 

@@ -17,6 +17,10 @@ let pTwoPoints = 0;
 let turnToggle = true;
 
 
+
+
+
+
 //==============================================
 //==  
 //==                                         
@@ -753,10 +757,9 @@ let totalRounds;
 const startGame = () => {
   let form = document.querySelector(".gameStart");
   totalRounds = form.elements.rounds.value;
-  let gameStartDialogue = document.querySelector(".startCzar")
+  hideForm.style.display = "none"
   gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds. \nThe longest word wins the round. The most points at the end of ${totalRounds} rounds is the WORD SMITH. \nLet us begin!`;
-  printRound();
-  printWord(randomizeWord());
+  
 }
 
 //setting up the page?
@@ -764,6 +767,26 @@ let round = 1;
 let displayRound = document.querySelector(".roundCounter");
 
 const printRound = () => displayRound.innerHTML = "Round: " + round;
+
+//===========================
+//== The game select modal ==
+//===========================
+
+let close = document.querySelector(".startGame")
+let modal = document.querySelector(".modalStart")
+let gameStartDialogue = document.querySelector(".startCzar")
+let triggerInstructions = document.querySelector(".roundSelector"
+)
+let hideForm = document.querySelector(".gameStart"); 
+close.onclick = function (){
+  modal.style.display = "none";
+  printRound();
+  printWord(randomizeWord());
+}
+
+triggerInstructions.onclick = function (){
+  
+}
 
 
 
