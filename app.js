@@ -772,17 +772,21 @@ const printRound = () => displayRound.innerHTML = "Round: " + round;
 //== The game select modal ==
 //===========================
 
-let close = document.querySelector(".startGame")
-let modal = document.querySelector(".modalStart")
-let gameStartDialogue = document.querySelector(".startCzar")
-let triggerInstructions = document.querySelector(".roundSelector"
-)
+let close = document.querySelector(".startGame");
+let modal = document.querySelector(".modalStart");
+let gameStartDialogue = document.querySelector(".startCzar");
+let triggerInstructions = document.querySelector(".roundSelector");
 let hideForm = document.querySelector(".gameStart"); 
-let instructions = document.querySelector(".instructions")
+let instructions = document.querySelector(".instructions");
+let playAgain = document.querySelector(".text");
+let form = document.querySelector(".gameRestart");
+
+
 close.onclick = function (){
   modal.style.display = "none";
   printRound();
   printWord(randomizeWord());
+  instructions.style.display = "none";
 }
 
 triggerInstructions.onclick = function (){
@@ -852,12 +856,35 @@ definitelyARealButton.addEventListener("click", function(event){
   }
   toggleTurn();
   if(totalRounds === 0){
-      winner();
+    winner();
+    setTimeout(function () {
+      close.style.display = "none";
+      playAgain.innerHTML = "Would you like to play again?";
+      modal.style.display = "flex";
+      form.style.display = "block";
+    }, 5000);
+
+      //bring up the modal again and change the innerHTML to be PlAY again?
       //ask to play again
-      //reset the values of the scores
+      //if yes
+        //reset the values of the scores
+      //if no 
+        //thank you for playing
     }
   } 
 );
+
+const restartGame = () => {
+  answer = form.elements.answer.value;
+  console.log(answer);
+  if (answer === "yes"){
+    pOnePoints = 0;
+    pTwoPoints = 0;
+    round = 1;
+    form.style.display = "none";
+    hideForm.style.display = "block";
+  }
+}
 
 //===============================================
 //==  The computer talking:                    ==
@@ -892,6 +919,10 @@ const winner = () => {
   } else if (pOnePoints < pTwoPoints){
     setTimeout(function (){
       wordCzar.innerHTML = "Player One! \nBetter luck next time. Player Two you are the WORD SMITH";
+    }, 3000);
+  } else if (pOnePoints === pTwoPoints){
+    setTimeout(function (){
+      wordCzar.innerHTML = "Word Smithery is strong with these two... you both are worthy of the title of WORD SMITH";
     }, 3000);
   }
 } 

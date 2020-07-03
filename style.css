@@ -7,7 +7,7 @@
 
 .modalStart{
   z-index: +1;
-  display: block;
+  /* display: block; */
   display: flex;
   position: fixed;
   align-items: center;
@@ -37,6 +37,10 @@
 .startGame{
   display: none;
   max-width: 25%;
+}
+
+.gameRestart{
+  display: none;
 }
 
 .wrapper {
