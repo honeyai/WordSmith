@@ -970,5 +970,5 @@ const winner = () => {
 //!After the first pass it doesn't warn you that you have entered an empty string.
 //TODO==============================================================================================================================================
 //On the start game button, making everything slide down and bounce a bit into the view port
-//!Display that the player's word was in there or not, and tell the player inside of the wordCzar thing that they got N points
+
 
