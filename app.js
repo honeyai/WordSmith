@@ -758,7 +758,7 @@ const startGame = () => {
   let form = document.querySelector(".gameStart");
   totalRounds = form.elements.rounds.value;
   hideForm.style.display = "none"
-  gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds. \nThe longest word wins the round. The player with the most points at the end of ${totalRounds} rounds is the WORD SMITH. \nLet us begin!`;
+  gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds.`+"<br/><br/>"+`The longest word wins the round. The player with the most points at the end of ${totalRounds} rounds is the WORD SMITH.`+"<br/><br/>"+`Let us begin!`;
 
 }
 
@@ -820,15 +820,13 @@ const toggleTurn = () => {
 //==========================================
 
 let definitelyARealButton = document.querySelector(".fakeSubmit");
-let pOneScore = document.querySelector(".playerOneScore")
-let pTwoScore = document.querySelector(".playerTwoScore")
-
-
+let pOneScore = document.querySelector(".playerOneScore");
+let pTwoScore = document.querySelector(".playerTwoScore");
 
 definitelyARealButton.addEventListener("click", function(event){
   console.log(round)
   if(turnToggle === true){
-      if(playerWord === ""){
+    if(playerWord === ""){
       console.log("entered an empty string")
     } else {
       console.log("this is what points is holding",points)
@@ -840,6 +838,7 @@ definitelyARealButton.addEventListener("click", function(event){
   }
   if(turnToggle === false){
     if(playerWord === ""){
+      wordCzar.innerHTML = "You didn't enter anything!"
       console.log("entered an empty string")
     } else {
       console.log("this is what points is holding",points)
@@ -901,7 +900,7 @@ let wordCzar = document.querySelector(".computerWordDisplay");
 
 const printWord = (word) => {
   displayWord = word[1];
-  wordCzar.innerHTML = "Word Smiths, your word is " + displayWord;
+  wordCzar.innerHTML = "<span class='czarText'>Word Smiths, your word is:</span>" + "<br/><br/>" + "<span class='theWord'>"+ displayWord + "</span>";
 }
 
 const whoWonRound = (pOne, pTwo) => {
@@ -935,5 +934,6 @@ const winner = () => {
 //*===============================================================NOTES=========================================================================
 
 //TODO==============================================================================================================================================
-//
+//On the start game button, making everything slide down and bounce a bit into the view port
+//!Display that the player's word was in there or not, and tell the player inside of the wordCzar thing that they got N points
 

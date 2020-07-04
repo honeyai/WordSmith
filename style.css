@@ -41,8 +41,8 @@ body{
 }
 
 .startCzar{
-  font-size: 2.5vw;
-  height: 100%;
+  font-size: 2vw;
+  max-height: 100%;
 }
 
 .gameStart{
@@ -51,13 +51,14 @@ body{
 }
 
 .chooseRounds, label{
+  font-size: 3vw;
   cursor: pointer;
 }
 
 .roundSelector{
   min-height: 15%;
   min-width: 20%;
-  font-size: 0.7vw;
+  font-size: 2vw;
   color: #8EADFF;
   background-color: transparent;
   border: #6D51B7 solid 7px;
@@ -70,7 +71,7 @@ body{
 .roundSelector:active{
   min-height: 13%;
   min-width: 18%;
-  font-size: 0.5vw;
+  font-size: 1.8vw;
   color: #697fbd;
   border: #574096 solid 7px;
 }
@@ -81,9 +82,9 @@ body{
 }
 
 .startGame{
-  min-height: 20%;
-  min-width: 15%;
-  font-size: 0.8em;
+  min-height: 15%;
+  min-width: 20%;
+  font-size: 1vw;
   color: #8EADFF;
   background-color: transparent;
   border: #6D51B7 solid 7px;
@@ -94,9 +95,9 @@ body{
 }
 
 .startGame:active{
-  min-height: 18%;
-  min-width: 13%;
-  font-size: 0.6vw;
+  min-height: 13%;
+  min-width: 18%;
+  font-size: 0.8vw;
   color: #6d86c9;
   border: #564091 solid 7px;
   border-radius: 35px;
@@ -105,6 +106,33 @@ body{
 .startGame:hover{
   color: #a4baf8;
   border: #8463df solid 7px;
+}
+
+.fakeSubmit{
+  min-height: 15%;
+  min-width: 20%;
+  font-size: 2vw;
+  color: #7364D9;
+  background-color: transparent;
+  border: #6D51B7 solid 7px;
+  border-radius: 35px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.09s;
+}
+
+.fakeSubmit:active{
+  min-height: 13%;
+  min-width: 18%;
+  font-size: 1.8vw;
+  color: #5c50af;
+  border: #564091 solid 7px;
+  border-radius: 35px;
+}
+
+.fakeSubmit:hover{
+  color: #8674ff;
+  border: #8c69ee solid 7px;
 }
 
 .instructions{
@@ -124,6 +152,37 @@ body{
 .gameRestart{
   display: none;
 }
+
+.theWord{
+  /* border: olivedrab solid; */
+  color: #3A1971;
+  font-size: 6vw;
+}
+
+#answer{
+  border: none;
+  width: 50vw;
+  height: 5vh;
+  font-size: 1.5em;
+  outline: none;
+}
+
+/* cool lil bounce but idk what to do with it yet */
+/* https://fdossena.com/?p=html5cool/buttons/i.frag */
+/* .bounce{
+ animation:bounce 5s infinite linear;
+ position:relative;
+}
+
+@keyframes bouncy {
+ 0%{top:0em}
+ 40%{top:0em}
+ 43%{top:-0.9em}
+ 46%{top:0em}
+ 48%{top:-0.4em}
+ 50%{top:0em}
+ 100%{top:0em;}
+} */
 
 .wrapper {
   /* border: springgreen solid; */
@@ -191,23 +250,39 @@ body{
 }
 
 .computerWordDisplay {
-  border: tomato solid;
   grid-column: 3;
   grid-row: 2;
   width: 100%;
   height: 100%;
-  font-size: 3.5vw;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.czarText{
+  display: block;
+  font-size: 4.5vw;
+  text-overflow: clip;
+}
+
+.noInput{
+  grid-column: 3;
+  grid-row: 2;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-flow: column;
+  justify-content: center;
 }
 
 .playerTextField {
-  border: turquoise solid;
+  /* border: turquoise solid; */
   grid-column: 3;
   grid-row: 3;
 }
 
 .anotherBuffer{
-  border: solid;
+  /* border: solid; */
   grid-row: 4;
   height: 3%;
-  /* width: 100vw; */
 }

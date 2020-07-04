@@ -29,12 +29,12 @@
     </div>
 
     <div class="computerWordDisplay">
-      
     </div>
+    <div class="noInput">You didn't write anything!</div>
 
     <div class="playerTextField">
-      <input type="text" name="playerInput" id="answer"> <br>
-      <button class="fakeSubmit" action="javascript:gamePlay()">Submit</button>
+      <input type="text" name="playerInput" id="answer" placeholder="Enter a synonym"> <br><br>
+      <button class="fakeSubmit bounce" action="javascript:gamePlay()">Submit</button>
     </div>
 
     <div id="wrapperBuffer"></div>
@@ -43,7 +43,7 @@
       <p class="text">WELCOME TO WORD SMITH</p>
       <br><br>
       <form class="gameStart" action="javascript:startGame()" name="gamestart">
-        <span>How many rounds would you like to play?</span><br><br>
+        <span class="chooseRounds">How many rounds would you like to play?</span><br><br>
         <div class="organize">
           <input type="radio" name="rounds" class="chooseRounds" value="3" id="3"><label for="3"> 3 rounds</label><br>
           <input type="radio" name="rounds" class="chooseRounds" value="5" id="5"><label for="5"> 5 rounds</label><br>
