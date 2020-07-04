@@ -758,16 +758,19 @@ const startGame = () => {
   let form = document.querySelector(".gameStart");
   totalRounds = form.elements.rounds.value;
   hideForm.style.display = "none"
-  gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds. \nThe longest word wins the round. The most points at the end of ${totalRounds} rounds is the WORD SMITH. \nLet us begin!`;
-  
+  gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds. \nThe longest word wins the round. The player with the most points at the end of ${totalRounds} rounds is the WORD SMITH. \nLet us begin!`;
+
 }
 
 //setting up the page?
 let round = 1;
 let displayRound = document.querySelector(".roundCounter");
 
-const printRound = () => displayRound.innerHTML = "Round: " + round;
-
+const printRound = () => displayRound.innerHTML = round;
+const printScore = () => {
+  pOneScore.innerHTML = pOnePoints + " points";
+  pTwoScore.innerHTML = pTwoPoints + " points";
+}
 //===========================
 //== The game select modal ==
 //===========================
@@ -784,6 +787,7 @@ let form = document.querySelector(".gameRestart");
 
 close.onclick = function (){
   modal.style.display = "none";
+  printScore();
   printRound();
   printWord(randomizeWord());
   instructions.style.display = "none";
@@ -830,7 +834,7 @@ definitelyARealButton.addEventListener("click", function(event){
       console.log("this is what points is holding",points)
       pOnePoints += points;
       // --~ displays those points to the respective play box y ~---
-      pOneScore.innerHTML = "Player one: "+ pOnePoints + " points";
+      pOneScore.innerHTML = pOnePoints + " points";
       answerBox.value = "";
     }
   }
@@ -841,7 +845,7 @@ definitelyARealButton.addEventListener("click", function(event){
       console.log("this is what points is holding",points)
       pTwoPoints += points;
       //--~ displays those points to the respective play box y ~--
-      pTwoScore.innerHTML = "Player two: \n"+ pTwoPoints + " points";
+      pTwoScore.innerHTML = pTwoPoints + " points";
       //--~ in two seconds after player two goes it'll say who won ~--
       answerBox.value = "";
       totalRounds--;

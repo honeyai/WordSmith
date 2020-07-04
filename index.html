@@ -4,28 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Coiny&family=Londrina+Solid:wght@100;300&family=Rammetto+One&family=Staatliches&display=swap" rel="stylesheet">
   <title>Word Smith</title>
 </head>
 <body>
   
   <div class="wrapper">
-
+    
     <div class="wrapperBuffer"></div>
 
-    <div class="gameTitle">
-      WORD SMITH
+    <div class="playerOneScoreContainer">
+      <span class="underline">Player One Score</span>
+      <span class="playerOneScore"></span>
     </div>
 
-    <div class="playerOneScore">
-      Player One Score: 
+    <div class="playerTwoScoreContainer">
+      <span class="underline">Player Two Score</span>
+      <span class="playerTwoScore"></span>
     </div>
 
-    <div class="playerTwoScore">
-      Player Two Score:
-    </div>
-
-    <div class="roundCounter">
-      Round:
+    <div class="roundCounterContainer">
+      <span class="underline">Round</span>
+      <span class="roundCounter"></span>
     </div>
 
     <div class="computerWordDisplay">
@@ -43,12 +43,12 @@
       <p class="text">WELCOME TO WORD SMITH</p>
       <br><br>
       <form class="gameStart" action="javascript:startGame()" name="gamestart">
-        How many rounds would you like to play?<br><br>
+        <span>How many rounds would you like to play?</span><br><br>
         <div class="organize">
-          <input type="radio" name="rounds" class="chooseRounds" value="3">  3 rounds</input><br><br>
-          <input type="radio" name="rounds" class="chooseRounds" value="5">  5 rounds</input><br><br>
-          <input type="radio" name="rounds" class="chooseRounds" value="7">  7 rounds</input><br><br>
-          <input type="radio" name="rounds" class="chooseRounds" value="9">  9 rounds</input><br><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="3" id="3"><label for="3"> 3 rounds</label><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="5" id="5"><label for="5"> 5 rounds</label><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="7" id="7"><label for="7"> 7 rounds</label><br>
+          <input type="radio" name="rounds" class="chooseRounds" value="9" id="9"><label for="9"> 9 rounds</label><br><br>
         </div>
         <input type="submit" value="Select" class="roundSelector">
       </form>
@@ -65,8 +65,8 @@
         </div>
         <input type="submit" value="Select" class="gameReplay">
       </form>
-
     </div>
+    <div class="anotherBuffer"></div>
 
   </div>
 
