@@ -938,29 +938,29 @@ const printWord = (word) => {
 const whoWonRound = (pOne, pTwo) => {
     if(pOne > pTwo){
       toggleDisplay(theWord);
-      czarText.innerHTML = "Player one has won this round!\nPlayer two...get it together!\nNext Round!"
+      czarText.innerHTML = "Player one has won this round!<br/>Player two...get it together!<br/>Next Round!"
     } else if(pTwo > pOne){
       toggleDisplay(theWord);
-      czarText.innerHTML = "Player two has won this round!\nPlayer one...get it together!\nNext Round!"
+      czarText.innerHTML = "Player two has won this round!<br/>Player one...get it together!<br/>Next Round!"
     } else if(pOne === pTwo){
       toggleDisplay(theWord);
-      czarText.innerHTML = "Evenly matched! This round was a tie!\nNext Round!"
+      czarText.innerHTML = "Evenly matched! This round was a tie!<br/>Next Round!"
     }
 }
 
 const winner = () => {
-  wordCzar.innerHTML = "That's the end! \nResults are in... Who is the Word Smith?"
+  wordCzar.innerHTML = "That's the end!<br/>Results are in... <br/>Who is the Word Smith?"
   if(pOnePoints > pTwoPoints){
     setTimeout(function () {
-      wordCzar.innerHTML = "Player Two!\nBetter luck next time. Player One you are the WORD SMITH";
+      wordCzar.innerHTML = "Player Two!<br/>Better luck next time. <br/>Player One you are the WORD SMITH";
     }, 3000);
   } else if (pOnePoints < pTwoPoints){
     setTimeout(function (){
-      wordCzar.innerHTML = "Player One! \nBetter luck next time. Player Two you are the WORD SMITH";
+      wordCzar.innerHTML = "Player One!<br/>Better luck next time. <br/>Player Two you are the WORD SMITH";
     }, 3000);
   } else if (pOnePoints === pTwoPoints){
     setTimeout(function (){
-      wordCzar.innerHTML = "Word Smithery is strong with these two... you both are worthy of the title of WORD SMITH";
+      wordCzar.innerHTML = "Word Smithery is strong with these two... <br/>You are both worthy of the title of WORD SMITH";
     }, 3000);
   }
 } 
@@ -970,5 +970,6 @@ const winner = () => {
 //!After the first pass it doesn't warn you that you have entered an empty string.
 //TODO==============================================================================================================================================
 //On the start game button, making everything slide down and bounce a bit into the view port
-
+//add an icon that controls if there is sound or not
+//fix the play again menu!
 
