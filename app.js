@@ -811,7 +811,6 @@ const toggleTurn = () => {
   } else {
     console.log("it's player one's turn")
     turnToggle = true;
-    round++;
   }
 }
 
@@ -822,37 +821,74 @@ const toggleTurn = () => {
 let definitelyARealButton = document.querySelector(".fakeSubmit");
 let pOneScore = document.querySelector(".playerOneScore");
 let pTwoScore = document.querySelector(".playerTwoScore");
+let inputAcknowledgement = document.querySelector(".inputAcknowledgement");
+//if gives me error make czar text here
+let czarText = document.querySelector(".czarText");
+
+
+//i think i can make this better by passing two params and if the display param is undefined set it to a default of block?
+const toggleDisplay = element => {
+  if (element.style.display === "none" ){
+    element.style.display = "block";
+  } else if (element.style.display !== "none"){
+    element.style.display = "none"
+  }
+}
 
 definitelyARealButton.addEventListener("click", function(event){
-  console.log(round)
+  console.log("this is the current round",round)
   if(turnToggle === true){
     if(playerWord === ""){
-      console.log("entered an empty string")
+      inputAcknowledgement.innerHTML = "You didn't enter anything!";
+      setTimeout(toggleDisplay, 1000, inputAcknowledgement);
+      console.log("entered an empty string");
+      setTimeout(function(){
+        toggleDisplay(inputAcknowledgement)
+        inputAcknowledgement.innerHTML = "Player two it's your turn!"
+      }, 2000);
     } else {
+      // toggleDisplay(inputAcknowledgement);
+      inputAcknowledgement.innerHTML = `You got ${points} points!`
+      setTimeout(toggleDisplay, 2000, inputAcknowledgement)
       console.log("this is what points is holding",points)
       pOnePoints += points;
       // --~ displays those points to the respective play box y ~---
       pOneScore.innerHTML = pOnePoints + " points";
       answerBox.value = "";
+      setTimeout(function(){
+        toggleDisplay(inputAcknowledgement)
+        inputAcknowledgement.innerHTML = "Player two it's your turn!"
+      }, 2000);
     }
-  }
-  if(turnToggle === false){
+  }else if(turnToggle === false){
     if(playerWord === ""){
-      wordCzar.innerHTML = "You didn't enter anything!"
+      // toggleDisplay(inputAcknowledgement)
+      inputAcknowledgement.innerHTML = "You didn't enter anything!"
+      setTimeout(toggleDisplay, 1000, inputAcknowledgement)
       console.log("entered an empty string")
+      setTimeout(function(){
+        toggleDisplay(inputAcknowledgement)
+        inputAcknowledgement.innerHTML = "Player One it's your turn!"
+      }, 2000);
+      round = round;
     } else {
+      // toggleDisplay(inputAcknowledgement)
+      inputAcknowledgement.innerHTML = `You got ${points} points!`
+      setTimeout(toggleDisplay, 1000, inputAcknowledgement)
       console.log("this is what points is holding",points)
       pTwoPoints += points;
       //--~ displays those points to the respective play box y ~--
       pTwoScore.innerHTML = pTwoPoints + " points";
-      //--~ in two seconds after player two goes it'll say who won ~--
       answerBox.value = "";
+      round++;
       totalRounds--;
       if(totalRounds > 0){
-        setTimeout(whoWonRound, 500, pOnePoints, pTwoPoints, totalRounds);
+        setTimeout(whoWonRound, 1000, pOnePoints, pTwoPoints);
         setTimeout(printRound, 500);
         setTimeout(function(){
-          printWord(randomizeWord())
+          toggleDisplay(inputAcknowledgement)
+          toggleDisplay(theWord);
+          printWord(randomizeWord());
         }, 5000);
       }
     }  
@@ -866,13 +902,6 @@ definitelyARealButton.addEventListener("click", function(event){
       modal.style.display = "flex";
       form.style.display = "block";
     }, 5000);
-
-      //bring up the modal again and change the innerHTML to be PlAY again?
-      //ask to play again
-      //if yes
-        //reset the values of the scores
-      //if no 
-        //thank you for playing
     }
   } 
 );
@@ -897,19 +926,25 @@ const restartGame = () => {
 //===============================================
 
 let wordCzar = document.querySelector(".computerWordDisplay");
+let theWord = document.querySelector(".theWord")
 
 const printWord = (word) => {
   displayWord = word[1];
-  wordCzar.innerHTML = "<span class='czarText'>Word Smiths, your word is:</span>" + "<br/><br/>" + "<span class='theWord'>"+ displayWord + "</span>";
+  czarText.innerHTML = "Word Smiths, your word is:" + "<br/><br/>";
+  theWord.innerHTML = displayWord;
+  inputAcknowledgement.innerHTML = "Player one it's your turn."
 }
 
 const whoWonRound = (pOne, pTwo) => {
     if(pOne > pTwo){
-      wordCzar.innerHTML = "Player one has won this round!\nPlayer two...get it together!\nNext Round!"
+      toggleDisplay(theWord);
+      czarText.innerHTML = "Player one has won this round!\nPlayer two...get it together!\nNext Round!"
     } else if(pTwo > pOne){
-      wordCzar.innerHTML = "Player two has won this round!\nPlayer one...get it together!\nNext Round!"
+      toggleDisplay(theWord);
+      czarText.innerHTML = "Player two has won this round!\nPlayer one...get it together!\nNext Round!"
     } else if(pOne === pTwo){
-      wordCzar.innerHTML = "Evenly matched! This round was a tie!\nNext Round!"
+      toggleDisplay(theWord);
+      czarText.innerHTML = "Evenly matched! This round was a tie!\nNext Round!"
     }
 }
 
@@ -932,7 +967,7 @@ const winner = () => {
 
 
 //*===============================================================NOTES=========================================================================
-
+//!After the first pass it doesn't warn you that you have entered an empty string.
 //TODO==============================================================================================================================================
 //On the start game button, making everything slide down and bounce a bit into the view port
 //!Display that the player's word was in there or not, and tell the player inside of the wordCzar thing that they got N points

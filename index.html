@@ -16,26 +16,30 @@
     <div class="playerOneScoreContainer">
       <span class="underline">Player One Score</span>
       <span class="playerOneScore"></span>
-    </div>
+    </div> <!--end of playerOneScoreContainer-->
 
     <div class="playerTwoScoreContainer">
       <span class="underline">Player Two Score</span>
       <span class="playerTwoScore"></span>
-    </div>
+    </div> <!--end of playerTwoScoreContainer-->
 
     <div class="roundCounterContainer">
       <span class="underline">Round</span>
       <span class="roundCounter"></span>
-    </div>
+    </div> <!--end of roundCounterContainer-->
 
     <div class="computerWordDisplay">
-    </div>
-    <div class="noInput">You didn't write anything!</div>
-
+      <div class="czarText"></div>
+      <span class="theWord"></span>
+      <div class="inputAcknowledgementContainer">
+        <span class="inputAcknowledgement"></span>
+      </div>
+    </div> <!--end of computerWordDisplay-->
+    
     <div class="playerTextField">
       <input type="text" name="playerInput" id="answer" placeholder="Enter a synonym"> <br><br>
       <button class="fakeSubmit bounce" action="javascript:gamePlay()">Submit</button>
-    </div>
+    </div> <!--end of playerText-->
 
     <div id="wrapperBuffer"></div>
 
@@ -49,7 +53,7 @@
           <input type="radio" name="rounds" class="chooseRounds" value="5" id="5"><label for="5"> 5 rounds</label><br>
           <input type="radio" name="rounds" class="chooseRounds" value="7" id="7"><label for="7"> 7 rounds</label><br>
           <input type="radio" name="rounds" class="chooseRounds" value="9" id="9"><label for="9"> 9 rounds</label><br><br>
-        </div>
+        </div> <!--end of organize-->
         <input type="submit" value="Select" class="roundSelector">
       </form>
       <br><br>
@@ -65,10 +69,10 @@
         </div>
         <input type="submit" value="Select" class="gameReplay">
       </form>
-    </div>
+    </div> <!--end of modal-->
     <div class="anotherBuffer"></div>
 
-  </div>
+  </div> <!--end of wrapper-->
 
 
   
