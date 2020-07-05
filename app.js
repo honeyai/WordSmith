@@ -711,6 +711,20 @@ const wordBank = [
 //################################################################################################################################################
 
 
+//audio pause/play
+
+let audioButton = document.querySelector(".toggleAudio")
+let gameTrack = document.querySelector(".gameTrack")
+
+audioButton.addEventListener("click", function(){
+  if(gameTrack.paused){
+    gameTrack.play();
+  } else {
+    gameTrack.pause()
+    gameTrack.currentTime = 0;
+  }
+})
+
 //===================================
 //==   Randomizing the Czar word   ==
 //===================================
@@ -930,7 +944,7 @@ let theWord = document.querySelector(".theWord")
 
 const printWord = (word) => {
   displayWord = word[1];
-  czarText.innerHTML = "Word Smiths, your word is:" + "<br/><br/>";
+  czarText.innerHTML = "Word Smiths, your word is:";
   theWord.innerHTML = displayWord;
   inputAcknowledgement.innerHTML = "Player one it's your turn."
 }
@@ -971,5 +985,6 @@ const winner = () => {
 //TODO==============================================================================================================================================
 //On the start game button, making everything slide down and bounce a bit into the view port
 //add an icon that controls if there is sound or not
-//fix the play again menu!
+//fix the aesthetics of the play again menu!
+//organize the js and comments
 
