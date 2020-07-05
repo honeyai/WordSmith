@@ -3,31 +3,6 @@
 //========================================================================================
 
 
-
-
-
-//======================
-//== Global Variables ==
-//======================
-
-let points = 0;
-let index;
-let pOnePoints = 0;
-let pTwoPoints = 0;
-let turnToggle = true;
-
-
-
-
-
-
-//==============================================
-//==  
-//==                                         
-//==              
-//==============================================
-
-
 //==============================================
 //==  Creating the word bank of which         ==
 //==  players will type the synonyms.         ==                               
@@ -711,10 +686,105 @@ const wordBank = [
 //################################################################################################################################################
 
 
-//audio pause/play
+//======================
+//== Global Variables ==
+//======================
 
-let audioButton = document.querySelector(".toggleAudio")
-let gameTrack = document.querySelector(".gameTrack")
+//~~- JS VARIABLES -~~
+
+// Points assigned by the points()
+let points = 0;
+
+// Index to locate player's input
+let index;
+
+// Random Index for which word will be displayed
+let randIndex;
+
+// The word chosen by randIndex
+let czarWord;
+
+// Players points
+let pOnePoints = 0;
+let pTwoPoints = 0;
+
+// Toggles at each player's turn end
+let turnToggle = true;
+
+// Empty value for the player input
+let playerWord = "";
+
+// Number of rounds to be played chosen at start
+let totalRounds;
+
+// Current Round
+let round = 1;
+
+
+//~~- DOM VARIABLES -~~
+
+// Text field
+let answerBox = document.querySelector("#answer");
+
+// Play/pause field
+let audioButton = document.querySelector(".toggleAudio");
+
+// Audio element
+let gameTrack = document.querySelector(".gameTrack");
+
+// Button that closes the modal and starts the game
+let close = document.querySelector(".startGame");
+
+// Beginning screen asking for how many rounds to play
+let modal = document.querySelector(".modalStart");
+
+// The container that holds gameStartDialogue
+let instructions = document.querySelector(".instructions");
+
+// Confirms the number of rounds and opens up gameStartDialogue
+let triggerInstructions = document.querySelector(".roundSelector");
+
+// Informs the players of the rounds they chose and how to play
+let gameStartDialogue = document.querySelector(".startCzar");
+
+// Used to hide or reveal the the form that has the rounds
+let hideForm = document.querySelector(".gameStart"); 
+
+// Round printed here
+let displayRound = document.querySelector(".roundCounter");
+
+// "submits" the player's synonyms. Its the button.
+let definitelyARealButton = document.querySelector(".fakeSubmit");
+
+// Player scor divs
+let pOneScore = document.querySelector(".playerOneScore");
+let pTwoScore = document.querySelector(".playerTwoScore");
+
+// Text to let the player what points if any they got
+let inputAcknowledgement = document.querySelector(".inputAcknowledgement");
+
+// The container that holds czarText and theWord
+let wordCzar = document.querySelector(".computerWordDisplay");
+
+// The dialogue for the computer, "Word smiths your word is:"
+let czarText = document.querySelector(".czarText");
+
+// The word chosen at random to provide synonyms for
+let theWord = document.querySelector(".theWord")
+
+// The div that holds "WELCOME TO WORD SMITH"
+let playAgain = document.querySelector(".text");
+
+// Asks for yes or no to restart
+let form = document.querySelector(".gameRestart");
+
+
+//||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+//========================
+//==  Audio pause/play  ==
+//========================
 
 audioButton.addEventListener("click", function(){
   if(gameTrack.paused){
@@ -728,9 +798,6 @@ audioButton.addEventListener("click", function(){
 //===================================
 //==   Randomizing the Czar word   ==
 //===================================
-
-let randIndex;
-let czarWord;
 
 const randomizeWord = () => {
   randIndex = Math.floor(Math.random() * wordBank.length);
@@ -747,10 +814,6 @@ const randomizeWord = () => {
 //==   methods when it detects a change   ==
 //==========================================
 
-let answerBox = document.querySelector("#answer");
-
-let playerWord = "";
-
 answerBox.addEventListener("change", function(event){
     playerWord = event.target.value.toLowerCase();
     console.log("this is the player's word:", playerWord)
@@ -766,7 +829,6 @@ answerBox.addEventListener("change", function(event){
 //== Determining how many rounds the  ==
 //==  player wants. All odd numbered  ==
 //======================================
-let totalRounds;
 
 const startGame = () => {
   let form = document.querySelector(".gameStart");
@@ -775,27 +837,19 @@ const startGame = () => {
   gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds.`+"<br/><br/>"+`The longest word wins the round. The player with the most points at the end of ${totalRounds} rounds is the WORD SMITH.`+"<br/><br/>"+`Let us begin!`;
 }
 
-//setting up the page?
-let round = 1;
-let displayRound = document.querySelector(".roundCounter");
+//================
+//== Page setup ==
+//================
 
 const printRound = () => displayRound.innerHTML = round;
 const printScore = () => {
   pOneScore.innerHTML = pOnePoints + " points";
   pTwoScore.innerHTML = pTwoPoints + " points";
 }
+
 //===========================
 //== The game select modal ==
 //===========================
-
-let close = document.querySelector(".startGame");
-let modal = document.querySelector(".modalStart");
-let gameStartDialogue = document.querySelector(".startCzar");
-let triggerInstructions = document.querySelector(".roundSelector");
-let hideForm = document.querySelector(".gameStart"); 
-let instructions = document.querySelector(".instructions");
-let playAgain = document.querySelector(".text");
-let form = document.querySelector(".gameRestart");
 
 close.onclick = function (){
   modal.style.display = "none";
@@ -815,9 +869,10 @@ triggerInstructions.onclick = function (){
   close.style.display = "block";
 }
 
-//++++++++++++++++++++++++++++++
-//++ Makes the next player go ++
-//++++++++++++++++++++++++++++++ 
+
+//==============================
+//== Makes the next player go ==
+//============================== 
 
 const toggleTurn = () => {
   if(turnToggle === true){
@@ -829,19 +884,13 @@ const toggleTurn = () => {
   }
 }
 
+
 //==========================================
 //== Prints things to the respective divs ==
 //==========================================
 
-let definitelyARealButton = document.querySelector(".fakeSubmit");
-let pOneScore = document.querySelector(".playerOneScore");
-let pTwoScore = document.querySelector(".playerTwoScore");
-let inputAcknowledgement = document.querySelector(".inputAcknowledgement");
-//if gives me error make czar text here
-let czarText = document.querySelector(".czarText");
 
-
-//i think i can make this better by passing two params and if the display param is undefined set it to a default of block?
+//?i think i can make this better by passing two params and if the display param is undefined set it to a default of block?
 const toggleDisplay = element => {
   if (element.style.display === "none" ){
     element.style.display = "block";
@@ -849,6 +898,18 @@ const toggleDisplay = element => {
     element.style.display = "none"
   }
 }
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// Per click, this checks 
+//   1. If there are still rounds left to play
+//   2. Who's turn it is
+//      - Let's them know if they got any points at all or if they didn't input anything
+//   3. End of each turn it prints the player's score and announces this round's winner
+//   4. Prints the next word 
+//   5. If there are no other rounds to play it'll trigger the end game
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 definitelyARealButton.addEventListener("click", function(){
   console.log("this is the current round",round)
@@ -862,7 +923,6 @@ definitelyARealButton.addEventListener("click", function(){
         inputAcknowledgement.innerHTML = "Player two it's your turn!"
       }, 2000);
     } else {
-      // toggleDisplay(inputAcknowledgement);
       inputAcknowledgement.innerHTML = `You got ${points} points!`
       setTimeout(toggleDisplay, 2000, inputAcknowledgement)
       console.log("this is what points is holding",points)
@@ -887,7 +947,6 @@ definitelyARealButton.addEventListener("click", function(){
       }, 2000);
       round = round;
     } else {
-      // toggleDisplay(inputAcknowledgement)
       inputAcknowledgement.innerHTML = `You got ${points} points!`
       setTimeout(toggleDisplay, 1000, inputAcknowledgement)
       console.log("this is what points is holding",points)
@@ -924,6 +983,10 @@ definitelyARealButton.addEventListener("click", function(){
   } 
 );
 
+//=======================================================
+//==  Reopens the modal if the player wants to replay  ==
+//=======================================================
+
 const restartGame = () => {
   answer = form.elements.answer.value;
   console.log(answer);
@@ -948,9 +1011,6 @@ const restartGame = () => {
 //==      -Printing the round's word           ==
 //===============================================
 
-let wordCzar = document.querySelector(".computerWordDisplay");
-let theWord = document.querySelector(".theWord")
-
 const printWord = (word) => {
   displayWord = word[1];
   czarText.innerHTML = "Word Smiths, your word is:";
@@ -970,6 +1030,10 @@ const whoWonRound = (pOne, pTwo) => {
       czarText.innerHTML = "Evenly matched! This round was a tie!<br/>Next Round!"
     }
 }
+
+//================
+//==  End Game  ==
+//================
 
 const winner = () => {
   toggleDisplay(theWord);
@@ -994,5 +1058,7 @@ const winner = () => {
 //!After the first pass it doesn't warn you that you have entered an empty string.
 //TODO==============================================================================================================================================
 
-//organize the js and comments
+// allow custom names for words
+// add the seth easter egg
+// add a timer restricting game input entry
 
