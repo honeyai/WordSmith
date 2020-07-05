@@ -990,8 +990,6 @@ const winner = () => {
 //*===============================================================NOTES=========================================================================
 //!After the first pass it doesn't warn you that you have entered an empty string.
 //TODO==============================================================================================================================================
-//On the start game button, making everything slide down and bounce a bit into the view port
-//add an icon that controls if there is sound or not
-//fix the aesthetics of the play again menu!
+
 //organize the js and comments
 
