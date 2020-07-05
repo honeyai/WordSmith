@@ -903,6 +903,9 @@ definitelyARealButton.addEventListener("click", function(){
         setTimeout(function(){
           toggleDisplay(inputAcknowledgement)
           toggleDisplay(theWord);
+          theWord.classList.add("cssanimation" );
+          theWord.classList.add("leFadeInLeft" );
+          theWord.classList.add("sequence");
           printWord(randomizeWord());
         }, 2000);
       }

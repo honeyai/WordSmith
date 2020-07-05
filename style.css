@@ -63,17 +63,6 @@ body{
   color: #8EADFF;
 }
 
-/* .bounceInTop { 
-  animation-name: bounceInTop 
-}
-
-@keyframes bounceInTop {
-    0% { transform: translate3d(0, -300%, 0) }
-    58% { transform: translate3d(0, 27px, 0) }
-    73% { transform: translate3d(0, -12px, 0) }
-    88% { transform: translate3d(0, 7px, 0) }
-} */
-
 .text{
   font-size: 5vw;
 }
@@ -234,23 +223,6 @@ body{
   font-size: 1.5em;
   outline: none;
 }
-
-/* cool lil bounce but idk what to do with it yet */
-/* https://fdossena.com/?p=html5cool/buttons/i.frag */
-/* .bounce{
- animation:bounce 5s infinite linear;
- position:relative;
-}
-
-@keyframes bouncy {
- 0%{top:0em}
- 40%{top:0em}
- 43%{top:-0.9em}
- 46%{top:0em}
- 48%{top:-0.4em}
- 50%{top:0em}
- 100%{top:0em;}
-} */
 
 .wrapper {
   /* border: springgreen solid; */
