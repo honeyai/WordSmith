@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Coiny&family=Londrina+Solid:wght@100;300&family=Rammetto+One&family=Staatliches&display=swap" rel="stylesheet">
+  <link href="./cssanimation/cssanimation.css" rel="stylesheet">
+
   <title>Word Smith</title>
 </head>
 <body>
@@ -45,34 +47,34 @@
     </div> <!--end of playerText-->
 
     <div id="wrapperBuffer"></div>
-
-    <div class="modalStart">
-      <p class="text">WELCOME TO WORD SMITH</p>
-      <br><br>
-      <form class="gameStart" action="javascript:startGame()" name="gamestart">
-        <span class="chooseRounds">How many rounds would you like to play?</span><br><br>
-        <div class="organize">
-          <input type="radio" name="rounds" class="chooseRounds" value="3" id="3"><label for="3"> 3 rounds</label><br>
-          <input type="radio" name="rounds" class="chooseRounds" value="5" id="5"><label for="5"> 5 rounds</label><br>
-          <input type="radio" name="rounds" class="chooseRounds" value="7" id="7"><label for="7"> 7 rounds</label><br>
-          <input type="radio" name="rounds" class="chooseRounds" value="9" id="9"><label for="9"> 9 rounds</label><br><br>
-        </div> <!--end of organize-->
-        <input type="submit" value="Select" class="roundSelector">
-      </form>
-      <br><br>
-      <div class="instructions">
-        <p class="startCzar"></p> <br><br>
-        <button class="startGame">Start Game</button>
-      </div>
-      <form class="gameRestart" action="javascript:restartGame()" name="gamerestart">
-        <div class="organize">
-          <input type="radio" name="answer" class="gameReplay" value="yes" id="yes"><label for="yes"> Yes</label><br><br>
-          <input type="radio" name="answer" class="gameReplay" value="no" id="no"><label for="no"> No</label><br><br>
+    <!-- <div class="cssanimation bounceInTop"> -->
+      <div class="modalStart cssanimation bounceInTop">
+        <p class="text">WELCOME TO WORD SMITH</p>
+        <br><br>
+        <form class="gameStart" action="javascript:startGame()" name="gamestart">
+          <span class="chooseRounds">How many rounds would you like to play?</span><br><br>
+          <div class="organize">
+            <input type="radio" name="rounds" class="chooseRounds" value="3" id="3"><label for="3"> 3 rounds</label><br>
+            <input type="radio" name="rounds" class="chooseRounds" value="5" id="5"><label for="5"> 5 rounds</label><br>
+            <input type="radio" name="rounds" class="chooseRounds" value="7" id="7"><label for="7"> 7 rounds</label><br>
+            <input type="radio" name="rounds" class="chooseRounds" value="9" id="9"><label for="9"> 9 rounds</label><br><br>
+          </div> <!--end of organize-->
+          <input type="submit" value="Select" class="roundSelector">
+        </form>
+        <br><br>
+        <div class="instructions">
+          <p class="startCzar"></p> <br><br>
+          <button class="startGame">Start Game</button>
         </div>
-        <input type="submit" value="Select" class="gameReplayButton">
-      </form>
-    </div> <!--end of modal-->
-    
+        <form class="gameRestart" action="javascript:restartGame()" name="gamerestart">
+          <div class="organize">
+            <input type="radio" name="answer" class="gameReplay" value="yes" id="yes"><label for="yes"> Yes</label><br><br>
+            <input type="radio" name="answer" class="gameReplay" value="no" id="no"><label for="no"> No</label><br><br>
+          </div>
+          <input type="submit" value="Select" class="gameReplayButton">
+        </form>
+      </div> <!--end of modal-->
+    <!-- </div> -->
     <div class="anotherBuffer"></div>
 
   </div> <!--end of wrapper-->

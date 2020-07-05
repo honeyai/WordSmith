@@ -43,6 +43,9 @@ body{
   cursor: pointer;
 }
 
+.forAnimation {
+  animation: bounceIntop;
+}
 
 .modalStart{
   z-index: +1;
@@ -59,6 +62,17 @@ body{
   background-color: rgba(0, 0, 0, 0.99);
   color: #8EADFF;
 }
+
+/* .bounceInTop { 
+  animation-name: bounceInTop 
+}
+
+@keyframes bounceInTop {
+    0% { transform: translate3d(0, -300%, 0) }
+    58% { transform: translate3d(0, 27px, 0) }
+    73% { transform: translate3d(0, -12px, 0) }
+    88% { transform: translate3d(0, 7px, 0) }
+} */
 
 .text{
   font-size: 5vw;

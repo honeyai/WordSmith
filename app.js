@@ -848,7 +848,7 @@ const toggleDisplay = element => {
   }
 }
 
-definitelyARealButton.addEventListener("click", function(event){
+definitelyARealButton.addEventListener("click", function(){
   console.log("this is the current round",round)
   if(turnToggle === true){
     if(playerWord === ""){
