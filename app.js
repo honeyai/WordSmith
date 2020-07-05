@@ -797,7 +797,6 @@ let instructions = document.querySelector(".instructions");
 let playAgain = document.querySelector(".text");
 let form = document.querySelector(".gameRestart");
 
-
 close.onclick = function (){
   modal.style.display = "none";
   printScore();
@@ -806,12 +805,15 @@ close.onclick = function (){
   instructions.style.display = "none";
 }
 
+close.addEventListener("click", function(){
+  document.querySelector('.wrapper').classList.add('cssanimation');
+  document.querySelector('.wrapper').classList.add('elevateRight');
+});
+
 triggerInstructions.onclick = function (){
   instructions.style.display = "flex";
   close.style.display = "block";
 }
-
-
 
 //++++++++++++++++++++++++++++++
 //++ Makes the next player go ++
