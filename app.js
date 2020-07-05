@@ -962,6 +962,9 @@ definitelyARealButton.addEventListener("click", function(){
         setTimeout(function(){
           toggleDisplay(inputAcknowledgement)
           toggleDisplay(theWord);
+          theWord.classList.add("cssanimation" );
+          theWord.classList.add("leFadeInLeft" );
+          theWord.classList.add("sequence");
           printWord(randomizeWord());
         }, 2000);
       }
@@ -1054,6 +1057,8 @@ const winner = () => {
 //*===============================================================NOTES=========================================================================
 //!After the first pass it doesn't warn you that you have entered an empty string.
 //TODO==============================================================================================================================================
+
 // allow custom names for words
 // add the seth easter egg
 // add a timer restricting game input entry
+
