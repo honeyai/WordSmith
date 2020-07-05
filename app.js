@@ -773,7 +773,6 @@ const startGame = () => {
   totalRounds = form.elements.rounds.value;
   hideForm.style.display = "none"
   gameStartDialogue.innerHTML = `We will be playing ${totalRounds} rounds.`+"<br/><br/>"+`The longest word wins the round. The player with the most points at the end of ${totalRounds} rounds is the WORD SMITH.`+"<br/><br/>"+`Let us begin!`;
-
 }
 
 //setting up the page?
@@ -903,7 +902,7 @@ definitelyARealButton.addEventListener("click", function(event){
           toggleDisplay(inputAcknowledgement)
           toggleDisplay(theWord);
           printWord(randomizeWord());
-        }, 5000);
+        }, 2000);
       }
     }  
   }
@@ -929,6 +928,11 @@ const restartGame = () => {
     round = 1;
     form.style.display = "none";
     hideForm.style.display = "block";
+    toggleDisplay(theWord);
+    printWord(randomizeWord());
+  } else if (answer === "no"){
+    playAgain.innerHTML = "Thank you for playing!";
+    form.style.display = "none";
   }
 }
 
@@ -963,18 +967,19 @@ const whoWonRound = (pOne, pTwo) => {
 }
 
 const winner = () => {
-  wordCzar.innerHTML = "That's the end!<br/>Results are in... <br/>Who is the Word Smith?"
+  toggleDisplay(theWord);
+  czarText.innerHTML = "That's the end!<br/>Results are in... <br/>Who is the Word Smith?"
   if(pOnePoints > pTwoPoints){
     setTimeout(function () {
-      wordCzar.innerHTML = "Player Two!<br/>Better luck next time. <br/>Player One you are the WORD SMITH";
+      czarText.innerHTML = "Player Two!<br/>Better luck next time. <br/>Player One you are the WORD SMITH";
     }, 3000);
   } else if (pOnePoints < pTwoPoints){
     setTimeout(function (){
-      wordCzar.innerHTML = "Player One!<br/>Better luck next time. <br/>Player Two you are the WORD SMITH";
+      czarText.innerHTML = "Player One!<br/>Better luck next time. <br/>Player Two you are the WORD SMITH";
     }, 3000);
   } else if (pOnePoints === pTwoPoints){
     setTimeout(function (){
-      wordCzar.innerHTML = "Word Smithery is strong with these two... <br/>You are both worthy of the title of WORD SMITH";
+      czarText.innerHTML = "Word Smithery is strong with these two... <br/>You are both worthy of the title of WORD SMITH";
     }, 3000);
   }
 } 

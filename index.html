@@ -64,13 +64,12 @@
         <p class="startCzar"></p> <br><br>
         <button class="startGame">Start Game</button>
       </div>
-      <br><br>
-      <form class="gameRestart" action="javascript:restartGame()" name="gamestart">
+      <form class="gameRestart" action="javascript:restartGame()" name="gamerestart">
         <div class="organize">
-          <input type="radio" name="answer" class="gameReplay" value="yes">  Yes</input><br><br>
-          <input type="radio" name="answer" class="gameReplay" value="no">  No</input><br><br>
+          <input type="radio" name="answer" class="gameReplay" value="yes" id="yes"><label for="yes"> Yes</label><br><br>
+          <input type="radio" name="answer" class="gameReplay" value="no" id="no"><label for="no"> No</label><br><br>
         </div>
-        <input type="submit" value="Select" class="gameReplay">
+        <input type="submit" value="Select" class="gameReplayButton">
       </form>
     </div> <!--end of modal-->
     

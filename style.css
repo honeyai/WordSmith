@@ -168,13 +168,37 @@ body{
   height: 50%;
 }
 
-.startGame{
-  display: none;
-  max-width: 25%;
-}
-
 .gameRestart{
   display: none;
+  font-size: 2vw;
+}
+
+.gameReplayButton{
+  /* display: none; */
+  min-height: 15%;
+  min-width: 20%;
+  font-size: 2vw;
+  color: #8EADFF;
+  background-color: transparent;
+  border: #6D51B7 solid 7px;
+  border-radius: 35px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.09s;
+}
+
+.gameReplayButton:active{
+  min-height: 13%;
+  min-width: 18%;
+  font-size: 1.8vw;
+  color: #6d86c9;
+  border: #564091 solid 7px;
+  border-radius: 35px;
+}
+
+.gameReplayButton:hover{
+  color: #a4baf8;
+  border: #8463df solid 7px;
 }
 
 .theWord{
@@ -182,6 +206,10 @@ body{
   /* display: none; */
   color: #3A1971;
   font-size: 6vw;
+}
+
+.wordCzar{
+  font-size: 4vw;
 }
 
 #answer{
@@ -275,6 +303,7 @@ body{
 }
 
 .computerWordDisplay {
+  font-size: 4vw;
   grid-column: 3;
   grid-row: 3;
   width: 100%;
@@ -322,3 +351,4 @@ body{
   /* width: 100vw; */
   /* position: absolute; */
 }
+
