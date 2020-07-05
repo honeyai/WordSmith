@@ -214,6 +214,7 @@ body{
 
 #answer{
   border: none;
+  border-radius: 30%;
   width: 50vw;
   height: 5vh;
   font-size: 1.5em;
@@ -324,7 +325,7 @@ body{
   /* border: solid; */
   display: flex;
   width: 100%;
-  /* height: 100%; */
+  font-size: 2vw;
   align-items: center;
   justify-content: center;
 }
